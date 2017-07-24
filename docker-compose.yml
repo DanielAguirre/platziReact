@@ -1,0 +1,12 @@
+version: "2"
+
+services: 
+  platzireact:
+    build: .
+    command: sh -c 'pwd && npm run build-server && node ./build/server'
+    ports: 
+      - "3001:3000"
+    volumes:
+      - .:/app
+    environment:
+      PORT: 3000
