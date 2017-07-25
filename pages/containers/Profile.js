@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Post extends Component {
+class Profile extends Component {
   render() {
     return (
       <section name="Home">
@@ -13,4 +13,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default Profile;
