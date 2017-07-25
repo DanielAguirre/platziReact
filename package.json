@@ -8,7 +8,7 @@
     "npm" : ">3.0" 
   } ,
   "scripts": {
-    "test": "jest --verbose --coverage --watch --updateSnapshot",
+    "test": "jest --verbose --coverage --updateSnapshot",
     "build-server": "webpack -w",
     "server": "nodemon ./build/server/index"
   },
