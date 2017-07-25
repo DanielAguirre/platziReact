@@ -6,6 +6,7 @@ import {
 
 import Home from './Home';
 import Post from './Post';
+import Profile from './Profile';
 import Error404 from './Error404';
 
 function Pages(){
@@ -22,7 +23,7 @@ function Pages(){
         <Route
           path="/post/:id"
           exact
-          component={About} 
+          component={Post} 
         />
         {/* USer Profile */}
         <Route
