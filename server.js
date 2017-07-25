@@ -2,10 +2,11 @@
 
 import http from 'http'
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Pages from './pages/containers/Pages';
+import Layout from './pages/components/Layout';
 
 
 function requestHandler(req, res) {
@@ -24,7 +25,13 @@ function requestHandler(req, res) {
   }
 
   res.setHeader('Content-Type', 'text/html');
-  res.write(html);
+  res.write(
+    renderToStaticMarkup(
+      <Layout 
+        title="Application"
+         content={html}
+      />)
+    );
   res.end();
 }
 
