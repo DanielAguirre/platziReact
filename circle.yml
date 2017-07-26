@@ -1,5 +1,5 @@
 machine:
-  -services: 
+  - services: 
     - docker
 
 dependencies:
