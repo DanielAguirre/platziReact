@@ -12,7 +12,6 @@ const api = {
     async getSingle(id = 1) {
       const response = await fetch(`${baseUrl}/posts/${id}`);
       const data = await response.json();
-      console.log({data});
      return data;
     },
     async getComments(id = 1) {
