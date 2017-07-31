@@ -27,7 +27,7 @@ function Pages(){
         />
         {/* USer Profile */}
         <Route
-          path="/usert/:id"
+          path="/user/:id"
           exact
           component={Profile} 
         />
