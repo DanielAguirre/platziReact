@@ -8,7 +8,7 @@
     "npm": ">3.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage -u",
     "build-server": "webpack -w",
     "server": "nodemon ./build/server/index",
     "static-server": "serve ./build/client --port 3001 cache=0",
