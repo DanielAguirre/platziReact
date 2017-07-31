@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Post from  '../../posts/containers/post.js';
+import Loading from '../../shared/components/Loading';
 import api from  '../../api';
 
 class Home  extends Component {
@@ -27,7 +28,7 @@ class Home  extends Component {
         <h1>Home</h1>
         <section>
           { this.state.loading && (
-            <h2>Loading posts...</h2>
+            <Loading />
           )}
           {this.state.posts
             .map(post => <Post key={post.id} {...post} />)}
