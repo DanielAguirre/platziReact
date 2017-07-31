@@ -11,7 +11,8 @@
     "test": "jest",
     "build-server": "webpack -w",
     "server": "nodemon ./build/server/index",
-    "static-server": "serve ./build/client --port 3001 cache=0"
+    "static-server": "serve ./build/client --port 3001 cache=0",
+    "dev": "concurrently \"npm run build-server\" \"npm run static-server\"  \"npm run server\" "
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-latest-minimal": "^1.1.2",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.0",
     "enzyme": "^2.9.1",
     "jest": "^20.0.4",
     "jest-cli": "^20.0.4",
