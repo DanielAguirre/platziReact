@@ -1,13 +1,23 @@
-const path = require("path");
+const path = require('path');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry :'./client.js',
-  output:{
+  entry: './client.js',
+  output: {
     filename: 'app.js',
     path: path.resolve(__dirname, '../build/client'),
   },
-  module:{
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/, /\.css$/],
+        use: [
+          'babel-loader',
+          'eslint-loader',
+        ],
+      },
+    ],
     loaders: [
       {
         test: /\.json$/,
@@ -33,7 +43,10 @@ module.exports = {
     ]
   },
   target:'web',
+  resolve: {
+    extensions: ['.js', '.jsx', '.css'],
+  },
   plugins: [
-    new extractTextPlugin('../statics/styles.css'),
+    new extractTextPlugin('../client/styles.css'),
   ],
 };
