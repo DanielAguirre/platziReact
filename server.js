@@ -1,21 +1,17 @@
-'use strict';
-
-import http from 'http'
+import http from 'http';
 import React from 'react';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 import Pages from './pages/containers/Pages';
 import Layout from './pages/components/Layout';
 
 
 function requestHandler(req, res) {
   const context = {};
-  let html = renderToString(
+  const html = renderToString(
     <StaticRouter location={req.url} context={context}>
       <Pages />
-    </StaticRouter>
-  );
+    </StaticRouter>);
 
   if (context.url) {
     res.writeHead(301, {
@@ -27,11 +23,10 @@ function requestHandler(req, res) {
   res.setHeader('Content-Type', 'text/html');
   res.write(
     renderToStaticMarkup(
-      <Layout 
+      <Layout
         title="Application"
-         content={html}
-      />)
-    );
+        content={html}
+      />));
   res.end();
 }
 

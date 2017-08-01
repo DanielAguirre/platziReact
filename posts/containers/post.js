@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom';
 import api from '../../api';
+import style from './Post.css';
 
 class Post extends Component{
   constructor(props){
@@ -31,19 +32,18 @@ class Post extends Component{
   }
 
   render(){
-    console.log('props',this.props)
     return (
-      <article id={`post-${this.props.id}`}>
+      <article id={`post-${this.props.id}`} className="post">
         <Link to={`/post/${this.props.id}`}>
           {this.props.title}
         </Link>
-        <p>{this.props.body}</p>
+        <p className="body">{this.props.body}</p>
         {!this.state.loading && (
-          <div>
+          <div className="meta">
             <Link to={`/user/${this.state.user.id}`}>
               {this.state.user.name}
             </Link>
-            <span>Hey {this.state.comments.length} comentarios</span>
+            <span className="comments">Hey {this.state.comments.length} comentarios</span>
           </div>
         )}
       </article>
