@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PostBody from '../../posts/containers/post';
 import Loading from '../../shared/components/Loading';
+import Coment from '../../comments/components/Comment';
 import api from '../../api';
 
 class Post extends Component {
@@ -47,6 +48,10 @@ class Post extends Component {
           user={this.state.user}
           comments={this.state.comments}
         />
+        <section>
+          {this.state.comments
+              .map(comment => <Coment key={comment.id} {...comment} />)}
+        </section>
       </section>
       )
   }

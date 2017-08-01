@@ -20,8 +20,38 @@ class Home  extends Component {
       page: this.state.page + 1,
       loading: false,  
     });
+    this.handleScroll  = this.handleScroll.bind(this);
+
+    window.addEventListener('scroll', this.handleScroll);
   }
 
+  handleScroll(event){
+    if (this.state.loading) return null;
+
+    const scrolled = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const fullHeight = document.documentElement.clientHeight;
+
+    if(!(scrolled + viewportHeight + 300 >= fullHeight)){
+      return null;
+    }
+
+    this.setState({loading:true},  async () => {
+      try {
+        const post = await api.posts.getList(this.state.page);
+        this.setState({
+          posts: this.state.posts.concat(post),
+          page: this.state.page +1,
+          loading: false,
+        })
+      } catch(error){
+        console.error(error);
+        this.setState({
+          loading: true
+        })
+      }
+    })
+  }
   render(){
     return (
       <section name="Home">
