@@ -1,0 +1,16 @@
+workflows:
+  version: 2
+  platziReact:
+    jobs:
+      - build:
+          docker:
+            - image: circleci/node:6.10
+          steps:
+            - run:
+                name: Building platzireact image
+                command: docker build -t platzireact .
+      - test:
+        steps:
+          - run:
+              name: Runing Test for PLatziReact
+              command: docker run platzireact sh -c "npm test -- -u"
