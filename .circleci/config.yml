@@ -8,7 +8,7 @@ workflows:
           steps:
             - run:
                 name: Building platzireact image
-                command: docker build -t platzireact .
+                command: docker build -t platzireact . --rm=false
       - test:
         steps:
           - run:

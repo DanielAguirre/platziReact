@@ -1,4 +1,5 @@
 const path = require("path");
+const extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry :'./server.js',
@@ -19,8 +20,19 @@ module.exports = {
         query:{
           presets:['latest-minimal', 'react'],
         }
+      },
+      {
+        test: /\.css$/,
+        loader:  extractTextPlugin.extract({
+          fallback: 'style-loader',
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: 'css-loader'
+        })
       }
     ]
   },
-  target:'node'
+  target:'node',
+  plugins: [
+    new extractTextPlugin('../statics/styles.css'),
+  ],
 };
